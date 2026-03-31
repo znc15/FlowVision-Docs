@@ -1,21 +1,13 @@
-name: Deploy Docs
+name: 文档 CI 校验
 
 on:
   push:
     branches: [main]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
+  pull_request:
+    branches: [main]
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,24 +19,5 @@ jobs:
       - name: 安装 Mintlify CLI
         run: npm install -g mintlify@latest
 
-      - name: 导出静态文档
-        run: mintlify export --output export.zip
-
-      - name: 解压到部署目录
-        run: |
-          mkdir -p _site
-          unzip -o export.zip -d _site/
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: 校验文档配置
+        run: mintlify broken-links

@@ -85,6 +85,54 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "开发指南",
+        "groups": [
+          {
+            "group": "基础",
+            "pages": [
+              "development",
+              "essentials/settings",
+              "essentials/navigation"
+            ]
+          },
+          {
+            "group": "编写内容",
+            "pages": [
+              "essentials/markdown",
+              "essentials/code",
+              "essentials/images",
+              "essentials/reusable-snippets"
+            ]
+          },
+          {
+            "group": "AI 工具集成",
+            "pages": [
+              "ai-tools/claude-code",
+              "ai-tools/cursor",
+              "ai-tools/windsurf"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "API 文档",
+            "pages": ["api-reference/introduction"]
+          },
+          {
+            "group": "接口示例",
+            "pages": [
+              "api-reference/endpoint/get",
+              "api-reference/endpoint/create",
+              "api-reference/endpoint/delete",
+              "api-reference/endpoint/webhook"
+            ]
+          }
+        ]
       }
     ]
   },
