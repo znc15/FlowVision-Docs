@@ -1,0 +1,5 @@
+node_modules/
+export.zip
+.mintlify/
+_site/
+.env
