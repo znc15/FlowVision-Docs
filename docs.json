@@ -1,31 +1,13 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "name": "FlowVision 文档",
   "theme": "mint",
-  "logo": {
-    "dark": "/logo/logo_256.png",
-    "light": "/logo/logo_256.png"
-  },
-  "favicon": "/logo/logo_128.png",
+  "name": "FlowVision 文档",
   "colors": {
     "primary": "#0050cb",
     "light": "#3B82F6",
     "dark": "#003A99"
   },
-  "topbarLinks": [
-    {
-      "name": "官网",
-      "url": "https://znc15.github.io/FlowVision"
-    },
-    {
-      "name": "GitHub",
-      "url": "https://github.com/znc15/FlowVision"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "下载",
-    "url": "https://github.com/znc15/FlowVision/releases/latest"
-  },
+  "favicon": "/logo/logo_128.png",
   "navigation": {
     "tabs": [
       {
@@ -33,7 +15,35 @@
         "groups": [
           {
             "group": "开始",
-            "pages": ["introduction", "quickstart", "configuration"]
+            "pages": [
+              "introduction",
+              "quickstart",
+              "configuration"
+            ]
+          },
+          {
+            "group": "Customization",
+            "pages": [
+              "essentials/settings",
+              "essentials/navigation"
+            ]
+          },
+          {
+            "group": "Writing content",
+            "pages": [
+              "essentials/markdown",
+              "essentials/code",
+              "essentials/images",
+              "essentials/reusable-snippets"
+            ]
+          },
+          {
+            "group": "AI tools",
+            "pages": [
+              "ai-tools/cursor",
+              "ai-tools/claude-code",
+              "ai-tools/windsurf"
+            ]
           }
         ]
       },
@@ -67,8 +77,18 @@
         "tab": "API 参考",
         "groups": [
           {
-            "group": "API 参考",
+            "group": "REST & WebSocket",
             "pages": ["api/rest", "api/websocket"]
+          },
+          {
+            "group": "接口示例",
+            "pages": [
+              "api-reference/introduction",
+              "api-reference/endpoint/get",
+              "api-reference/endpoint/create",
+              "api-reference/endpoint/delete",
+              "api-reference/endpoint/webhook"
+            ]
           }
         ]
       },
@@ -85,58 +105,59 @@
             ]
           }
         ]
-      },
-      {
-        "tab": "开发指南",
-        "groups": [
-          {
-            "group": "基础",
-            "pages": [
-              "development",
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "编写内容",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI 工具集成",
-            "pages": [
-              "ai-tools/claude-code",
-              "ai-tools/cursor",
-              "ai-tools/windsurf"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "API 文档",
-            "pages": ["api-reference/introduction"]
-          },
-          {
-            "group": "接口示例",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
-          }
-        ]
       }
-    ]
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Documentation",
+          "href": "https://mintlify.com/docs",
+          "icon": "book-open-cover"
+        },
+        {
+          "anchor": "Blog",
+          "href": "https://mintlify.com/blog",
+          "icon": "newspaper"
+        }
+      ]
+    }
   },
-  "footerSocials": {
-    "github": "https://github.com/znc15/FlowVision"
+  "logo": {
+    "light": "/logo/logo_256.png",
+    "dark": "/logo/logo_256.png"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "官网",
+        "href": "https://znc15.github.io/FlowVision"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/znc15/FlowVision"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "下载",
+      "href": "https://github.com/znc15/FlowVision/releases/latest"
+    }
+  },
+  "contextual": {
+    "options": [
+     "copy",
+     "view",
+     "chatgpt",
+     "claude",
+     "perplexity",
+     "mcp",
+     "cursor",
+     "vscode"
+   ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/znc15/FlowVision"
+    }
   }
 }
