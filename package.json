@@ -11,6 +11,7 @@
     "dev": "docusaurus start",
     "start": "docusaurus start",
     "build": "docusaurus build",
+    "verify:static-assets": "node scripts/verify-static-assets.mjs",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve",

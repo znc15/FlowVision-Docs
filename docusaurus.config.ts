@@ -10,7 +10,7 @@ const baseUrl = process.env.DOCS_BASE_URL || (isUserSite ? '/' : `/${projectName
 const config: Config = {
   title: 'FlowVision 文档',
   tagline: 'AI 驱动的流程图设计工具文档中心',
-  favicon: 'logo/logo_128.png',
+  favicon: 'logo_128.png',
   future: {
     v4: true,
   },
@@ -67,7 +67,7 @@ const config: Config = {
     ],
   ],
   themeConfig: {
-    image: 'logo/logo_512.png',
+    image: 'logo_512.png',
     colorMode: {
       defaultMode: 'light',
       disableSwitch: false,
@@ -77,7 +77,7 @@ const config: Config = {
       title: 'FlowVision',
       logo: {
         alt: 'FlowVision Logo',
-        src: 'logo/logo_256.png',
+        src: 'logo_256.png',
       },
       items: [
         {to: '/', label: '文档', position: 'left'},

@@ -3,6 +3,8 @@ title: '开发说明'
 description: '本地预览、静态构建与 GitHub Pages 发布的完整流程'
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 :::info 环境要求
 - Node.js 20 或更高版本
 - pnpm 9 或更高版本
@@ -35,10 +37,10 @@ pnpm serve
 
 ## 静态资源与路径
 
-本项目通过 `staticDirectories` 直接复用现有的 `images/` 与 `logo/` 目录，不再依赖额外的资源复制脚本。
+本项目通过 `staticDirectories` 直接复用现有的 `images/` 与 `logo/` 目录。引用这些资源时，应使用 `useBaseUrl` 生成最终 URL，避免在 GitHub Pages 项目路径下出现 404。
 
 <div className="fv-hero-frame fv-hero-frame--compact">
-  <img src="/images/checks-passed.png" alt="GitHub Pages 部署成功示意图" style={{ borderRadius: '0.5rem' }} />
+  <img src={useBaseUrl('/checks-passed.png')} alt="GitHub Pages 部署成功示意图" style={{ borderRadius: '0.5rem' }} />
 </div>
 
 ## 编辑重点
