@@ -1,7 +1,17 @@
 {
-  "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
-    "baseUrl": "."
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2022",
+    "skipLibCheck": true,
+    "types": ["node"]
   },
-  "exclude": [".docusaurus", "build", ".official-template"]
+  "include": [
+    "docs/.vuepress/**/*.ts",
+    "docs/.vuepress/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules",
+    ".theme-hope-template"
+  ]
 }

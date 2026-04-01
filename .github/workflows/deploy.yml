@@ -1,4 +1,4 @@
-name: 部署文档到 GitHub Pages
+name: 部署 VuePress 文档到 GitHub Pages
 
 on:
   push:
@@ -39,12 +39,12 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: 构建站点
-        run: pnpm build
+        run: pnpm docs:build
 
       - name: 上传构建产物
         uses: actions/upload-pages-artifact@v3
         with:
-          path: build
+          path: docs/.vuepress/dist
 
   deploy:
     needs: build
