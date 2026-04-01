@@ -1,6 +1,6 @@
 # FlowVision Docs
 
-这是 FlowVision 的文档站仓库，现已改为基于 Docusaurus 的纯静态站项目，可直接部署到 GitHub Pages。
+这是 FlowVision 的文档站仓库，现已迁移为基于 Docusaurus 官方 classic 模板的静态站项目，可直接部署到 GitHub Pages。
 
 ## 技术栈
 
@@ -29,30 +29,15 @@ pnpm serve
 
 ## 部署
 
-仓库内已包含 GitHub Pages 工作流：
-
-- 推送到 `main` 分支后自动构建
-- 构建完成后自动发布到 GitHub Pages
-- 项目页路径会根据仓库名自动设置 `baseUrl`
+仓库内已包含 GitHub Pages 工作流，推送到 `main` 分支后会自动构建并发布。
 
 ## 目录说明
 
 - 文档内容：根目录 `.mdx` 文件与各功能子目录
-- 侧边栏：`sidebars.mjs`
-- 站点配置：`docusaurus.config.mjs`
-- 兼容组件：`src/components/MintlifyCompat.jsx`
-- 全局 MDX 组件映射：`src/theme/MDXComponents.js`
+- 侧边栏：`sidebars.ts`
+- 站点配置：`docusaurus.config.ts`
+- 全局样式：`src/css/custom.css`
 
-## 兼容策略
+## 内容策略
 
-为了尽量保留原站点外观与内容结构，项目提供了一层 Mintlify 风格兼容组件，能够继续渲染以下常见标签：
-
-- `Card` / `CardGroup` / `Columns`
-- `Steps` / `Step`
-- `Accordion` / `AccordionGroup`
-- `Note` / `Tip` / `Warning` / `Info` / `Check`
-- `ResponseField` / `Expandable`
-- `CodeGroup` / `Frame` / `Latex`
-
-这让现有 MDX 内容无需大规模重写即可迁移到静态部署方案。
-
+历史页面已经改写为 Docusaurus 原生 MDX 写法。后续新增内容建议直接使用 Markdown、MDX、admonitions、Tabs、`details` 以及 Docusaurus 官方配置能力。

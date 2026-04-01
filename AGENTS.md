@@ -4,8 +4,8 @@
 
 - This is a documentation site built on Docusaurus
 - Pages are MDX files with YAML frontmatter
-- Site configuration lives in `docusaurus.config.mjs`
-- Sidebar configuration lives in `sidebars.mjs`
+- Site configuration lives in `docusaurus.config.ts`
+- Sidebar configuration lives in `sidebars.ts`
 - Run `pnpm dev` to preview locally
 - Run `pnpm build` to verify the static output
 

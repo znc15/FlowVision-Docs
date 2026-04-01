@@ -1,10 +1,10 @@
 ---
 title: "Windsurf setup"
-description: "Configure Windsurf for your documentation workflow"
+description: "Configure Windsurf for your Docusaurus documentation workflow"
 icon: "water"
 ---
 
-Set up Windsurf's Cascade AI assistant to help you write and maintain your Mintlify documentation.
+Set up Windsurf's Cascade AI assistant to help you write and maintain your Docusaurus documentation.
 
 ## Prerequisites
 
@@ -12,28 +12,17 @@ Set up Windsurf's Cascade AI assistant to help you write and maintain your Mintl
 
 ## Setup
 
-<Steps>
-<Step title="Open your docs directory in Windsurf">
-  Open the root of your documentation repository where `docs.json` is located.
-</Step>
+1. Open the repository root in Windsurf.
+2. Review `AGENTS.md` and current docs structure before editing.
+3. Use Cascade to draft or revise MDX pages.
+4. Validate the output in the terminal:
 
-<Step title="Install the Mintlify skill">
-  In the integrated terminal, run:
+```bash
+pnpm build
+```
 
-  ```bash
-  npx skills add https://mintlify.com/docs
-  ```
+5. Run a local preview when you need to inspect layout changes:
 
-  This gives Windsurf Mintlify's component reference, writing standards,
-  and workflow guidance.
-</Step>
-
-<Step title="Customize project instructions">
-  Edit `AGENTS.md` in your project root to add project-specific terminology,
-  style preferences, and content boundaries.
-</Step>
-
-<Step title="Start writing with Cascade">
-  Open a file and use Cascade to draft and edit documentation.
-</Step>
-</Steps>
+```bash
+pnpm dev
+```

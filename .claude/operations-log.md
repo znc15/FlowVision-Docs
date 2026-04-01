@@ -10,13 +10,13 @@
 - 现有 MDX 页面：保留原有内容结构
 
 将遵循命名约定：沿用现有页面路径与目录名作为路由
-将遵循代码风格：MDX 内容最小改动，新增 React 兼容组件接管 Mintlify 标签
-确认不重复造轮子，证明：已检查现有仓库，无现成静态站骨架与全局 MDX 组件映射
+将遵循代码风格：优先采用官方 classic 模板结构，仅为历史 MDX 保留最小兼容层
+确认不重复造轮子，证明：已切换为 Docusaurus 官方 classic 模板底座，不再维持自写脚手架
 
 ## 执行记录
 
-- 选型：Docusaurus + 全局 MDX 兼容组件 + GitHub Actions Pages 部署
-- 原因：支持静态构建、GitHub Pages 配置成熟、最适合承接当前 MDX 内容
+- 选型：Docusaurus 官方 classic 模板 + 历史 MDX 兼容层 + GitHub Actions Pages 部署
+- 原因：用现成成品模板承接站点结构，减少自写骨架，同时保留现有内容与路由
 
 ## 编码后声明 - GitHub Pages 静态迁移
 
@@ -27,20 +27,21 @@
 - docs.json：用于提取原导航结构、品牌色、外链信息
 - images 与 logo：通过 staticDirectories 直接复用静态资源目录
 - 现有 MDX 页面：保留原有目录结构与大部分正文内容
+- 官方 classic 模板：复用 package scripts、TypeScript 配置、官方 config/sidebars 结构
 
 ### 2. 遵循了以下项目约定
 
 - 命名约定：仍然沿用原页面文件名与目录名作为最终路由
-- 代码风格：内容页维持 MDX 为主，仅在必要位置补兼容组件与静态 API 文案
+- 代码风格：项目底座采用官方模板默认结构，内容页维持 MDX 为主，仅在必要位置补兼容组件与静态 API 文案
 
 ### 3. 对比了以下相似实现
 
-- docs.json：新方案把原导航配置拆分为 docusaurus.config.mjs 与 sidebars.mjs，但保留原信息架构
+- docs.json：新方案把原导航配置拆分为 docusaurus.config.ts 与 sidebars.ts，但保留原信息架构
 - index.mdx：保留卡片式首页入口，只将内容替换为 FlowVision 实际文档入口
 - essentials/settings.mdx：未重写页面主体，而是通过兼容组件层接住 Mintlify 标签
 
 ### 4. 未重复造轮子的证明
 
-- 已检查仓库内不存在现成的 Docusaurus 骨架、GitHub Pages 工作流或全局 MDX 组件映射
-- 新增方案直接复用 Docusaurus 官方静态部署能力，没有引入自研构建系统
+- 当前仓库已直接切换到官方 Docusaurus classic 模板结构
+- 自定义部分仅保留历史 Mintlify 风格 MDX 的必要兼容层，没有继续扩展自研脚手架
 

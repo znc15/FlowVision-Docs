@@ -1,87 +1,100 @@
 ---
 title: 'Navigation'
-description: 'The navigation field in docs.json defines the pages that go in the navigation menu'
+description: '使用 Docusaurus 侧边栏与导航配置组织文档页面'
 icon: 'map'
 ---
 
-The navigation menu is the list of links on every website.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-You will likely update `docs.json` every time you add a new page. Pages do not show up automatically.
+导航菜单决定了用户如何浏览你的文档站。在当前项目中，顶部导航和侧边栏分别由不同文件控制：
 
-## Navigation syntax
+- 顶部导航：`docusaurus.config.ts`
+- 侧边栏：`sidebars.ts`
 
-Our navigation syntax is recursive which means you can make nested navigation groups. You don't need to include `.mdx` in page names.
+## 侧边栏语法
 
-<CodeGroup>
+侧边栏配置支持分组、嵌套和手动排序。你不需要写 `.mdx` 后缀，只需要提供文档 ID。
 
-```json Regular Navigation
-"navigation": {
-  "tabs": [
+<Tabs>
+  <TabItem value="simple" label="基础分组" default>
+
+```json title="基础结构"
+[
+  "index",
+  {
+    "type": "category",
+    "label": "开始",
+    "items": ["introduction", "quickstart", "configuration"]
+  }
+]
+```
+
+  </TabItem>
+  <TabItem value="nested" label="嵌套分组">
+
+```json title="嵌套结构"
+[
+  {
+    "type": "category",
+    "label": "功能指南",
+    "items": [
+      "features/ai-generate",
+      {
+        "type": "category",
+        "label": "高级主题",
+        "items": ["features/project-analysis", "features/visual-editor"]
+      }
+    ]
+  }
+]
+```
+
+  </TabItem>
+</Tabs>
+
+## 目录与路由
+
+将 MDX 文件放进目录后，Docusaurus 会按路径生成路由。例如：
+
+- `features/ai-generate.mdx` -> `/features/ai-generate`
+- `architecture/frontend.mdx` -> `/architecture/frontend`
+
+如果页面已经在 `sidebars.ts` 中声明，它会出现在侧边栏里；否则依旧可以被直接访问，但不会显示在导航树中。
+
+:::warning
+当前项目的 `docs.routeBasePath` 设置为 `/`，这意味着文档直接挂在站点根路径，不再使用 `/docs/...` 前缀。
+:::
+
+## 当前项目示例
+
+```ts title="sidebars.ts"
+const sidebars = {
+  docsSidebar: [
+    'index',
     {
-      "tab": "Docs",
-      "groups": [
-        {
-          "group": "Getting Started",
-          "pages": ["quickstart"]
-        }
-      ]
-    }
-  ]
+      type: 'category',
+      label: '开始',
+      items: ['introduction', 'quickstart', 'configuration', 'development'],
+    },
+  ],
+};
+```
+
+## 顶部导航
+
+顶部导航按钮位于 `docusaurus.config.ts` 的 `themeConfig.navbar.items` 中。例如：
+
+```ts title="docusaurus.config.ts"
+navbar: {
+  items: [
+    {to: '/', label: '文档', position: 'left'},
+    {to: '/features/ai-generate', label: '功能指南', position: 'left'},
+    {href: 'https://github.com/znc15/FlowVision', label: 'GitHub', position: 'right'},
+  ],
 }
 ```
 
-```json Nested Navigation
-"navigation": {
-  "tabs": [
-    {
-      "tab": "Docs",
-      "groups": [
-        {
-          "group": "Getting Started",
-          "pages": [
-            "quickstart",
-            {
-              "group": "Nested Reference Pages",
-              "pages": ["nested-reference-page"]
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
+## 隐藏页面
 
-</CodeGroup>
-
-## Folders
-
-Simply put your MDX files in folders and update the paths in `docs.json`.
-
-For example, to have a page at `https://yoursite.com/your-folder/your-page` you would make a folder called `your-folder` containing an MDX file called `your-page.mdx`.
-
-<Warning>
-
-You cannot use `api` for the name of a folder unless you nest it inside another folder. Mintlify uses Next.js which reserves the top-level `api` folder for internal server calls. A folder name such as `api-reference` would be accepted.
-
-</Warning>
-
-```json Navigation With Folder
-"navigation": {
-  "tabs": [
-    {
-      "tab": "Docs",
-      "groups": [
-        {
-          "group": "Group Name",
-          "pages": ["your-folder/your-page"]
-        }
-      ]
-    }
-  ]
-}
-```
-
-## Hidden pages
-
-MDX files not included in `docs.json` will not show up in the sidebar but are accessible through the search bar and by linking directly to them.
+未加入 `sidebars.ts` 的页面不会显示在侧边栏，但仍然可以通过搜索、直接链接或其他页面中的引用访问。

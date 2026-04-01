@@ -3,17 +3,17 @@ title: "快速开始"
 description: "用 Docusaurus 在本地运行 FlowVision 文档，并部署到 GitHub Pages"
 ---
 
+import Link from '@docusaurus/Link';
+
 ## 三步启动文档站
 
-<Steps>
-  <Step title="安装依赖">
+1. 安装依赖
 
 ```bash
 pnpm install
 ```
 
-  </Step>
-  <Step title="启动本地预览">
+2. 启动本地预览
 
 ```bash
 pnpm dev
@@ -21,44 +21,55 @@ pnpm dev
 
 默认预览地址为 `http://localhost:3000`。保存 MDX 页面或样式文件后会自动刷新。
 
-  </Step>
-  <Step title="发布到 GitHub Pages">
+3. 发布到 GitHub Pages
 
 将变更推送到 `main` 分支后，仓库中的 GitHub Actions 工作流会自动执行构建并发布静态产物。
 
-  </Step>
-</Steps>
-
 ## 发布前检查
 
-<AccordionGroup>
-  <Accordion icon="copy" title="确认本地构建可通过">
-    在提交前先运行 `pnpm build`，确认所有 MDX 页面、兼容组件和静态资源都能正常生成。
+<details className="fv-details">
+  <summary>确认本地构建可通过</summary>
 
-    <Tip>如果仓库名称发生变化，可以通过环境变量 `DOCS_BASE_URL` 覆盖默认的发布子路径。</Tip>
-  </Accordion>
-  <Accordion icon="github" title="启用 GitHub Pages">
-    在仓库设置中将 Pages 的 Source 设置为 GitHub Actions。首次推送后，工作流会自动生成部署环境并发布站点。
-  </Accordion>
-  <Accordion icon="palette" title="调整站点标题与主题色">
-    站点标题、导航和底部链接位于 `docusaurus.config.mjs`，卡片样式与品牌配色位于 `src/css/custom.css`。
-  </Accordion>
-</AccordionGroup>
+在提交前先运行 `pnpm build`，确认所有 MDX 页面、静态资源和站点配置都能正常生成。
+
+:::tip
+如果仓库名称发生变化，可以通过环境变量 `DOCS_BASE_URL` 覆盖默认的发布子路径。
+:::
+
+</details>
+
+<details className="fv-details">
+  <summary>启用 GitHub Pages</summary>
+
+在仓库设置中将 Pages 的 Source 设置为 GitHub Actions。首次推送后，工作流会自动生成部署环境并发布站点。
+
+</details>
+
+<details className="fv-details">
+  <summary>调整站点标题与主题色</summary>
+
+站点标题、导航和底部链接位于 `docusaurus.config.ts`，主题样式位于 `src/css/custom.css`。
+
+</details>
 
 ## 下一步
 
-<CardGroup cols={2}>
-  <Card title="内容编写" icon="pen-to-square" href="/essentials/markdown">
-    继续使用 MDX 编写产品文档，并复用现有组件。
-  </Card>
-  <Card title="开发说明" icon="rectangle-terminal" href="/development">
-    查看本地开发、构建、预览与故障排查方式。
-  </Card>
-  <Card title="功能指南" icon="wand-magic-sparkles" href="/features/ai-generate">
-    继续完善产品功能说明与操作手册。
-  </Card>
-  <Card title="API 参考" icon="code" href="/api-reference/introduction">
-    基于现有 OpenAPI 示例继续补充静态 API 文档页面。
-  </Card>
-</CardGroup>
+<div className="fv-link-grid">
+  <Link className="fv-link-card" to="/essentials/markdown">
+    <strong>内容编写</strong>
+    <span>继续使用 MDX 编写产品文档与说明页面。</span>
+  </Link>
+  <Link className="fv-link-card" to="/development">
+    <strong>开发说明</strong>
+    <span>查看本地开发、构建、预览与故障排查方式。</span>
+  </Link>
+  <Link className="fv-link-card" to="/features/ai-generate">
+    <strong>功能指南</strong>
+    <span>继续完善产品功能说明与操作手册。</span>
+  </Link>
+  <Link className="fv-link-card" to="/api-reference/introduction">
+    <strong>API 参考</strong>
+    <span>基于现有 OpenAPI 示例继续补充静态 API 文档页面。</span>
+  </Link>
+</div>
 

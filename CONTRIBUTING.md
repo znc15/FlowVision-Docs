@@ -1,34 +1,32 @@
-> **Customize this file**: Tailor this template to your project by noting specific contribution types you're looking for, adding a Code of Conduct, or adjusting the writing guidelines to match your style.
+# 参与文档贡献
 
-# Contribute to the documentation
+感谢你为 FlowVision 文档做出贡献。本仓库已经切换为基于 Docusaurus 的静态文档站，以下流程适用于当前项目。
 
-Thank you for your interest in contributing to our documentation! This guide will help you get started.
+## 贡献方式
 
-## How to contribute
+### 方式一：直接在 GitHub 上编辑
 
-### Option 1: Edit directly on GitHub
+1. 打开你要修改的页面。
+2. 点击页面对应文件的编辑按钮。
+3. 提交变更并创建 Pull Request。
 
-1. Navigate to the page you want to edit
-2. Click the "Edit this file" button (the pencil icon)
-3. Make your changes and submit a pull request
+### 方式二：本地开发
 
-### Option 2: Local development
+1. Fork 并克隆仓库。
+2. 安装依赖：`pnpm install`
+3. 新建分支。
+4. 修改 MDX 页面或站点配置。
+5. 启动本地预览：`pnpm dev`
+6. 在 `http://localhost:3000` 检查页面效果。
+7. 提交变更并发起 Pull Request。
 
-1. Fork and clone this repository
-2. Install the Mintlify CLI: `npm i -g mint`
-3. Create a branch for your changes
-4. Make changes
-5. Navigate to the docs directory and run `mint dev`
-6. Preview your changes at `http://localhost:3000`
-7. Commit your changes and submit a pull request
+如需更多本地开发信息，请查看 [development.mdx](development.mdx)。
 
-For more details on local development, see our [development guide](development.mdx).
+## 写作规范
 
-## Writing guidelines
-
-- **Use active voice**: "Run the command" not "The command should be run"
-- **Address the reader directly**: Use "you" instead of "the user"
-- **Keep sentences concise**: Aim for one idea per sentence
-- **Lead with the goal**: Start instructions with what the user wants to accomplish
-- **Use consistent terminology**: Don't alternate between synonyms for the same concept
-- **Include examples**: Show, don't just tell
+- 使用主动语态。
+- 直接面向读者写作。
+- 句子尽量简洁，一句表达一个重点。
+- 先写目标，再写操作步骤。
+- 术语保持统一，优先使用仓库既有叫法。
+- 关键步骤尽量提供示例。

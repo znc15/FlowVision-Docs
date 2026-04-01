@@ -1,18 +1,23 @@
 import {themes as prismThemes} from 'prism-react-renderer';
+import type {Config} from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
 
 const repository = process.env.GITHUB_REPOSITORY || 'znc15/FlowVision-Docs';
-const [organizationName, repositoryName] = repository.split('/');
-const isUserSite = repositoryName.endsWith('.github.io');
-const baseUrl = process.env.DOCS_BASE_URL || (isUserSite ? '/' : `/${repositoryName}/`);
+const [organizationName, projectName] = repository.split('/');
+const isUserSite = projectName.endsWith('.github.io');
+const baseUrl = process.env.DOCS_BASE_URL || (isUserSite ? '/' : `/${projectName}/`);
 
-const config = {
+const config: Config = {
   title: 'FlowVision 文档',
   tagline: 'AI 驱动的流程图设计工具文档中心',
   favicon: 'logo/logo_128.png',
+  future: {
+    v4: true,
+  },
   url: process.env.DOCS_SITE_URL || 'https://znc15.github.io',
   baseUrl,
   organizationName,
-  projectName: repositoryName,
+  projectName,
   trailingSlash: false,
   onBrokenLinks: 'warn',
   staticDirectories: ['images', 'logo'],
@@ -32,7 +37,7 @@ const config = {
         docs: {
           path: '.',
           routeBasePath: '/',
-          sidebarPath: './sidebars.mjs',
+          sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/znc15/FlowVision-Docs/tree/main/',
           exclude: [
             'README.md',
@@ -50,6 +55,7 @@ const config = {
             'snippets/**',
             '.github/**',
             '.claude/**',
+            '.official-template/**',
           ],
         },
         blog: false,
@@ -57,7 +63,7 @@ const config = {
         theme: {
           customCss: './src/css/custom.css',
         },
-      },
+      } satisfies Preset.Options,
     ],
   ],
   themeConfig: {
@@ -117,7 +123,7 @@ const config = {
           ],
         },
       ],
-      copyright: `Copyright ${new Date().getFullYear()} FlowVision`,
+      copyright: `Copyright © ${new Date().getFullYear()} FlowVision. Built with Docusaurus.`,
     },
     docs: {
       sidebar: {
@@ -129,7 +135,7 @@ const config = {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
-  },
+  } satisfies Preset.ThemeConfig,
 };
 
 export default config;

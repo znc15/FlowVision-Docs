@@ -23,10 +23,12 @@
 
 - 执行命令：`pnpm install`
 - 结果：成功
+- 执行命令：`pnpm typecheck`
+- 结果：成功
 - 执行命令：`pnpm build`
 - 结果：成功，静态文件生成于 `build/`
 
 ## 结论
 
-项目已完成从 Mintlify 模板仓到 Docusaurus 静态文档站的迁移。
+项目已完成从 Mintlify 模板仓到基于 Docusaurus 官方 classic 模板的静态文档站迁移。
 现有站点可在本地构建，并可通过 GitHub Actions 自动发布到 GitHub Pages。

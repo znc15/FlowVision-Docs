@@ -3,24 +3,20 @@ title: '开发说明'
 description: '本地预览、静态构建与 GitHub Pages 发布的完整流程'
 ---
 
-<Info>
-  **环境要求**：
-  - Node.js 20 或更高版本
-  - pnpm 9 或更高版本
-</Info>
+:::info 环境要求
+- Node.js 20 或更高版本
+- pnpm 9 或更高版本
+:::
 
 ## 本地开发
 
-<Steps>
-  <Step title="安装依赖">
+1. 安装依赖
 
 ```bash
 pnpm install
 ```
 
-  </Step>
-
-  <Step title="启动开发服务器">
+2. 启动开发服务器
 
 ```bash
 pnpm dev
@@ -28,9 +24,7 @@ pnpm dev
 
 本地预览默认运行在 `http://localhost:3000`。
 
-  </Step>
-
-  <Step title="验证静态构建">
+3. 验证静态构建
 
 ```bash
 pnpm build
@@ -39,37 +33,40 @@ pnpm serve
 
 先生成 `build/`，再用本地静态服务模拟 GitHub Pages 的实际产物。
 
-  </Step>
-</Steps>
-
 ## 静态资源与路径
 
 本项目通过 `staticDirectories` 直接复用现有的 `images/` 与 `logo/` 目录，不再依赖额外的资源复制脚本。
 
-<Frame>
+<div className="fv-hero-frame fv-hero-frame--compact">
   <img src="/images/checks-passed.png" alt="GitHub Pages 部署成功示意图" style={{ borderRadius: '0.5rem' }} />
-</Frame>
+</div>
 
 ## 编辑重点
 
-- 站点配置：`docusaurus.config.mjs`
-- 侧边栏：`sidebars.mjs`
+- 站点配置：`docusaurus.config.ts`
+- 侧边栏：`sidebars.ts`
 - 主题样式：`src/css/custom.css`
-- 兼容组件：`src/components/MintlifyCompat.jsx`
 
 ## 常见问题
 
-<AccordionGroup>
-  <Accordion title="构建后图片或链接在 GitHub Pages 上 404">
-    这通常是 `baseUrl` 与仓库名不一致导致的。项目会默认根据 GitHub 仓库名生成项目页子路径；如果你部署到自定义路径，请设置 `DOCS_BASE_URL`。
-  </Accordion>
+<details className="fv-details">
+  <summary>构建后图片或链接在 GitHub Pages 上 404</summary>
 
-  <Accordion title="MDX 页面里出现未知组件错误">
-    请确认组件名称已经在 `src/theme/MDXComponents.js` 中注册。如果是 Mintlify 遗留标签，优先补充到兼容组件层，而不是逐页手改。
-  </Accordion>
+这通常是 `baseUrl` 与仓库名不一致导致的。项目会默认根据 GitHub 仓库名生成项目页子路径；如果你部署到自定义路径，请设置 `DOCS_BASE_URL`。
 
-  <Accordion title="GitHub Actions 构建失败">
-    先在本地运行 `pnpm install` 和 `pnpm build`。如果本地通过，再检查仓库是否已启用 GitHub Pages 的 GitHub Actions Source。
-  </Accordion>
-</AccordionGroup>
+</details>
+
+<details className="fv-details">
+  <summary>MDX 页面渲染异常</summary>
+
+当前项目已切换为原生 Docusaurus 语法。如果你新增了 JSX、Tabs 或 details 结构，先运行 `pnpm build` 检查 MDX 编译结果。
+
+</details>
+
+<details className="fv-details">
+  <summary>GitHub Actions 构建失败</summary>
+
+先在本地运行 `pnpm install` 和 `pnpm build`。如果本地通过，再检查仓库是否已启用 GitHub Pages 的 GitHub Actions Source。
+
+</details>
 
