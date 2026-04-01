@@ -1,4 +1,41 @@
 ---
-title: 'Get Plants'
-openapi: 'GET /plants'
+title: '获取植物列表'
+description: '基于示例 OpenAPI 规范生成的静态 GET /plants 说明页'
 ---
+
+## Endpoint
+
+```http
+GET /plants
+```
+
+## 说明
+
+返回当前用户可访问的植物列表。这是仓库中 `openapi.json` 示例规范对应的静态页面，用来展示 GitHub Pages 下的 API 文档组织方式。
+
+## 查询参数
+
+| 参数 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| `limit` | integer | 否 | 返回结果最大数量 |
+
+## 成功响应
+
+```json
+[
+	{
+		"id": "plant_001",
+		"name": "Monstera deliciosa",
+		"price": 39.9
+	}
+]
+```
+
+## 错误响应
+
+```json
+{
+	"error": "Unexpected error"
+}
+```
+

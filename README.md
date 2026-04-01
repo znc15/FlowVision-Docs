@@ -1,55 +1,58 @@
-# Mintlify Starter Kit
+# FlowVision Docs
 
-Use the starter kit to get your docs deployed and ready to customize.
+这是 FlowVision 的文档站仓库，现已改为基于 Docusaurus 的纯静态站项目，可直接部署到 GitHub Pages。
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## 技术栈
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+- Docusaurus 3
+- React 18
+- MDX 文档页面
+- GitHub Actions + GitHub Pages
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
-
-## AI-assisted writing
-
-Set up your AI coding tool to work with Mintlify:
+## 本地开发
 
 ```bash
-npx skills add https://mintlify.com/docs
+pnpm install
+pnpm dev
 ```
 
-This command installs Mintlify's documentation skill for your configured AI tools like Claude Code, Cursor, Windsurf, and others. The skill includes component reference, writing standards, and workflow guidance.
+默认本地预览地址为 `http://localhost:3000`。
 
-See the [AI tools guides](/ai-tools) for tool-specific setup.
+## 构建与预览
 
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
-npm i -g mint
+```bash
+pnpm build
+pnpm serve
 ```
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
+静态构建产物输出到 `build/` 目录。
 
-```
-mint dev
-```
+## 部署
 
-View your local preview at `http://localhost:3000`.
+仓库内已包含 GitHub Pages 工作流：
 
-## Publishing changes
+- 推送到 `main` 分支后自动构建
+- 构建完成后自动发布到 GitHub Pages
+- 项目页路径会根据仓库名自动设置 `baseUrl`
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+## 目录说明
 
-## Need help?
+- 文档内容：根目录 `.mdx` 文件与各功能子目录
+- 侧边栏：`sidebars.mjs`
+- 站点配置：`docusaurus.config.mjs`
+- 兼容组件：`src/components/MintlifyCompat.jsx`
+- 全局 MDX 组件映射：`src/theme/MDXComponents.js`
 
-### Troubleshooting
+## 兼容策略
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+为了尽量保留原站点外观与内容结构，项目提供了一层 Mintlify 风格兼容组件，能够继续渲染以下常见标签：
 
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+- `Card` / `CardGroup` / `Columns`
+- `Steps` / `Step`
+- `Accordion` / `AccordionGroup`
+- `Note` / `Tip` / `Warning` / `Info` / `Check`
+- `ResponseField` / `Expandable`
+- `CodeGroup` / `Frame` / `Latex`
+
+这让现有 MDX 内容无需大规模重写即可迁移到静态部署方案。
+

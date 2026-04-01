@@ -1,94 +1,75 @@
 ---
-title: 'Development'
-description: 'Preview changes locally to update your docs'
+title: '开发说明'
+description: '本地预览、静态构建与 GitHub Pages 发布的完整流程'
 ---
 
 <Info>
-  **Prerequisites**:
-  - Node.js version 19 or higher
-  - A docs repository with a `docs.json` file
+  **环境要求**：
+  - Node.js 20 或更高版本
+  - pnpm 9 或更高版本
 </Info>
 
-Follow these steps to install and run Mintlify on your operating system.
+## 本地开发
 
 <Steps>
-<Step title="Install the Mintlify CLI">
+  <Step title="安装依赖">
 
 ```bash
-npm i -g mint
+pnpm install
 ```
-</Step>
 
-<Step title="Preview locally">
+  </Step>
 
-Navigate to your docs directory where your `docs.json` file is located, and run the following command:
+  <Step title="启动开发服务器">
 
 ```bash
-mint dev
+pnpm dev
 ```
 
-A local preview of your documentation will be available at `http://localhost:3000`.
+本地预览默认运行在 `http://localhost:3000`。
 
-</Step>
+  </Step>
+
+  <Step title="验证静态构建">
+
+```bash
+pnpm build
+pnpm serve
+```
+
+先生成 `build/`，再用本地静态服务模拟 GitHub Pages 的实际产物。
+
+  </Step>
 </Steps>
 
-## Custom ports
+## 静态资源与路径
 
-By default, Mintlify uses port 3000. You can customize the port Mintlify runs on by using the `--port` flag. For example, to run Mintlify on port 3333, use this command:
-
-```bash
-mint dev --port 3333
-```
-
-If you attempt to run Mintlify on a port that's already in use, it will use the next available port:
-
-```md
-Port 3000 is already in use. Trying 3001 instead.
-```
-
-## Mintlify versions
-
-Please note that each CLI release is associated with a specific version of Mintlify. If your local preview does not align with the production version, please update the CLI:
-
-```bash
-npm mint update
-```
-
-## Validating links
-
-The CLI can assist with validating links in your documentation. To identify any broken links, use the following command:
-
-```bash
-mint broken-links
-```
-
-## Deployment
-
-If the deployment is successful, you should see the following:
+本项目通过 `staticDirectories` 直接复用现有的 `images/` 与 `logo/` 目录，不再依赖额外的资源复制脚本。
 
 <Frame>
-  <img src="/images/checks-passed.png" alt="Screenshot of a deployment confirmation message that says All checks have passed." style={{ borderRadius: '0.5rem' }} />
+  <img src="/images/checks-passed.png" alt="GitHub Pages 部署成功示意图" style={{ borderRadius: '0.5rem' }} />
 </Frame>
 
-## Code formatting
+## 编辑重点
 
-We suggest using extensions on your IDE to recognize and format MDX. If you're a VSCode user, consider the [MDX VSCode extension](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) for syntax highlighting, and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) for code formatting.
+- 站点配置：`docusaurus.config.mjs`
+- 侧边栏：`sidebars.mjs`
+- 主题样式：`src/css/custom.css`
+- 兼容组件：`src/components/MintlifyCompat.jsx`
 
-## Troubleshooting
+## 常见问题
 
 <AccordionGroup>
-  <Accordion title='Error: Could not load the "sharp" module using the darwin-arm64 runtime'>
-
-    This may be due to an outdated version of node. Try the following:
-    1. Remove the currently-installed version of the CLI: `npm remove -g mint`
-    2. Upgrade to Node v19 or higher.
-    3. Reinstall the CLI: `npm i -g mint`
+  <Accordion title="构建后图片或链接在 GitHub Pages 上 404">
+    这通常是 `baseUrl` 与仓库名不一致导致的。项目会默认根据 GitHub 仓库名生成项目页子路径；如果你部署到自定义路径，请设置 `DOCS_BASE_URL`。
   </Accordion>
 
-  <Accordion title="Issue: Encountering an unknown error">
-  
-    Solution: Go to the root of your device and delete the `~/.mintlify` folder. Then run `mint dev` again.
+  <Accordion title="MDX 页面里出现未知组件错误">
+    请确认组件名称已经在 `src/theme/MDXComponents.js` 中注册。如果是 Mintlify 遗留标签，优先补充到兼容组件层，而不是逐页手改。
+  </Accordion>
+
+  <Accordion title="GitHub Actions 构建失败">
+    先在本地运行 `pnpm install` 和 `pnpm build`。如果本地通过，再检查仓库是否已启用 GitHub Pages 的 GitHub Actions Source。
   </Accordion>
 </AccordionGroup>
 
-Curious about what changed in the latest CLI version? Check out the [CLI changelog](https://www.npmjs.com/package/mintlify?activeTab=versions).

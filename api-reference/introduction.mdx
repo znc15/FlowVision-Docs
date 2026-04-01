@@ -1,28 +1,28 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: 'API 参考简介'
+description: 'FlowVision 文档站中的静态 API 示例与 OpenAPI 模板说明'
 ---
 
 <Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
+  当前 API 页面已改为静态文档模式。仓库中的 `api-reference/openapi.json` 仍然保留，作为后续接入真实 FlowVision OpenAPI 规范的模板文件。
 </Note>
 
-## Welcome
+## 当前结构
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+本目录包含两部分内容：
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
+1. `api/` 目录中的接口说明页面
+2. `api-reference/endpoint/` 目录中的示例端点页
+
+这些页面现在都是普通 MDX 文档，不依赖 Mintlify 的自动 OpenAPI 渲染能力，因此可以直接静态构建并部署到 GitHub Pages。
+
+<Card title="查看示例规范文件" icon="leaf" href="https://github.com/znc15/FlowVision-Docs/blob/main/api-reference/openapi.json">
+  打开仓库中的 OpenAPI 示例文件，作为后续替换为真实接口定义时的起点。
 </Card>
 
-## Authentication
+## 鉴权示例
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+示例规范里使用 Bearer Token 鉴权：
 
 ```json
 "security": [
@@ -31,3 +31,15 @@ All API endpoints are authenticated using Bearer tokens and picked up from the s
   }
 ]
 ```
+
+## 后续扩展建议
+
+<CardGroup cols={2}>
+  <Card title="替换示例规范" icon="code" href="/api/rest">
+    用 FlowVision 真实的 OpenAPI 文件替换示例数据，再逐步补足端点说明。
+  </Card>
+  <Card title="完善静态端点页" icon="pen-to-square" href="/api-reference/endpoint/get">
+    为每个接口补充请求参数、响应示例和错误码说明。
+  </Card>
+</CardGroup>
+
