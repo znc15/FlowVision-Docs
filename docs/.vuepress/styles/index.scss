@@ -5,3 +5,42 @@ img {
 table {
   overflow: hidden;
 }
+
+.flowvision-home,
+.flowvision-home.vp-project-home {
+  .vp-page,
+  & {
+    background:
+      radial-gradient(circle at top left, rgba(35, 180, 102, 0.12), transparent 26%),
+      linear-gradient(180deg, #f7fbf8 0%, #ffffff 30%);
+  }
+
+  .vp-hero-info {
+    max-width: 44rem;
+  }
+
+  .vp-hero-title {
+    letter-spacing: -0.04em;
+    font-size: clamp(2.8rem, 5vw, 4.4rem);
+  }
+
+  #main-description {
+    max-width: 38rem;
+    color: var(--vp-c-text-mute);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .vp-hero-image {
+    filter: drop-shadow(0 20px 40px rgba(16, 80, 47, 0.14));
+  }
+
+  .vp-feature-header {
+    margin-bottom: 1rem;
+  }
+
+  .vp-feature-item {
+    border: 1px solid rgba(16, 80, 47, 0.08);
+    box-shadow: 0 16px 30px rgba(16, 80, 47, 0.06);
+  }
+}
